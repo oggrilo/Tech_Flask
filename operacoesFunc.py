@@ -1,29 +1,35 @@
 import mysql.connector
 import conexao
+import this
+this.msg = ""
 
 db_connection = conexao.conectar() #Abrindo a conexão com o banco de dados
 con = db_connection.cursor()
 
-def inserir(nomeFunc, cpfFunc, celularFunc, salarioFunc, senhaFunc):
+def inserirFunc(nomeFunc, cpfFunc, celularFunc, salarioFunc, senhaFunc, cargo):
     try:
-        sql = "insert into funcionario(codigoFunc, nomeFunc, cpfFunc, celularFunc, salarioFunc, senhaFunc) values('','{}','{}','{}','{}','{}')".format(nomeFunc, cpfFunc, celularFunc, salarioFunc, senhaFunc)
+        sql = "insert into funcionario(codigoFunc, nomeFunc, cpfFunc, celularFunc, salarioFunc, senhaFunc, cargo) values('','{}','{}','{}','{}','{}','{}')".format(nomeFunc, cpfFunc, celularFunc, salarioFunc, senhaFunc, cargo)
         con.execute(sql)#Prepara o comando para ser executado
         db_connection.commit()#Executa o comando no banco de dados
-        print(con.rowcount, "Inserido!")
+        return con.rowcount, "Inserido!"
     except Exception as erro:
-        print(erro)
+        return erro
 
 #Consultar os dados do BD
-def selecionar():
+def selecionar_func(nome):
     try:
-        sql = "select * from funcionario"
+        sql = "select * from funcionario where nomeFunc = '{}'".format(nome)
         con.execute(sql)
 
-        for (nomeFunc, cpfFunc, celularFunc, salarioFunc, senhaFunc) in con:
-            print(nomeFunc, cpfFunc, celularFunc, salarioFunc, senhaFunc)
-        print('\n')
+        this.msg = ""
+        this.msg = " Nenhum Funcionário Encontrado! "
+        for (codigoFunc, nomeFunc, cpfFunc, celularFunc, salarioFunc, senhaFunc, cargo) in con:
+            if nomeFunc == nome:
+                this.msg = "Código: {}, Nome: {}, CPF: {}, Celular: {}, Salário {}, Senha: {}, Cargo: {}".format(codigoFunc, nomeFunc, cpfFunc, celularFunc, salarioFunc, senhaFunc, cargo)
+                return this.msg
+        return this.msg
     except Exception as erro:
-        print(erro)
+        return erro
 
 #Atualizar dados no banco de dados
 def atualizarNome(codigoFunc, nomeFunc):

@@ -12,7 +12,7 @@
     <title>{{titulo}}</title>
 </head>
 <body>
-    <!-- NAVBAR-->
+      <!-- NAVBAR-->
     <nav class="navbar navbar-expand-lg bg-light">
       <div class="container-fluid">
         <a class="navbar-brand" href="/index.html">TechFood</a>
@@ -61,8 +61,47 @@
 <div class="container-xl"><!--100% wide until extra large breakpoint-->
 
     <br><br>
-    <p  class="text-center fw-bold text-uppercase" >Página inicial</p>
+    <p  class="text-center fw-bold text-uppercase" >Cadastro Funcionário</p>
+    <form action="/cadastrarFunc.html" method="POST" class="row g-3">
+      <!-- label de nome -->
+      <div class="col-md-6">
+        <label id="nomeFunc" name="nomeFunc" class="form-label">Nome</label>
+        <input type="text" class="form-control" id="tNomeFunc" name="tNovoNomeFunc" placeholder="Maria Conceição">
+      </div>
+      <!-- label de cpf -->
+      <div class="col-md-6">
+        <label id="cpfFunc" name="cpfFunc" class="form-label">CPF</label>
+        <input type="text" class="form-control" id="tCpfFunc" name="tNovoCpfFunc" placeholder="000.000.000-00">
+      </div>
+      <!-- label de telefone -->
+      <div class="col-md-6">
+        <label id="celularFunc" name="celularFunc" class="form-label">Telefone</label>
+        <input type="text" class="form-control" id="tCelularFunc" name="tNovoCelularFunc" placeholder="(00)00000-0000">
+      </div>
+      <!-- label de salário -->
+      <div class="col-md-6">
+        <label id="salarioFunc"  name="salarioFunc" class="form-label">Salário</label>
+        <input type="text" class="form-control" id="tSalarioFunc" name="tNovoSalarioFunc" placeholder="R$ 0000,00">
+      </div>
+      <!-- label de senha -->
+      <div class="col-md-6">
+        <label id="senhaFunc" name="senhaFunc" class="form-label">Senha</label>
+        <input type="password" class="form-control" id="tSenhaFunc" name="tNovoSenhaFunc" placeholder="abc123@">
+      </div>
+      <!-- label de cargo -->
+      <div class="col-md-4">
+        <label for="inputCargo" class="form-label ">Cargo</label>
+        <select id="inputCargo" name= "Cargo" class="form-select ">
+          <option selected>Administrador</option>
+          <option>Funcionário Comum</option>
+        </select>
+      </div>
 
+      <div class="col-12">
+        <button type="submit" class="btn btn-primary">Cadastrar Funcionário</button>
+      </div>
+    </form>
+    <h3>{{resultado}}</h3>
 </div>
 </body>
 </html>
