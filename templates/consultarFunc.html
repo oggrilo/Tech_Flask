@@ -12,10 +12,10 @@
     <title>{{titulo}}</title>
 </head>
 <body>
-  <!-- NAVBAR-->
-    <nav class="navbar navbar-expand-lg bg-light">
+     <!-- NAVBAR-->
+    <nav class="navbar navbar-expand-lg bg-light navbar fixed-top bg-light">
       <div class="container-fluid">
-        <a class="navbar-brand" href="/index.html">TechFood</a>
+        <a class="navbar-brand" href="/">TechFood</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -31,6 +31,7 @@
             <li class="nav-item">
               <a class="nav-link" href="#">Link</a>
             </li>
+
               <!-- DROPDOWN PARA ABAS DE FUNCIONÁRIOS -->
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="/funcionarios.html" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -42,28 +43,18 @@
                 <li><hr class="dropdown-divider"></li>
 
                 <li><a class="dropdown-item" href="/consultarFunc.html">Consultar Funcionários</a></li>
-                <li><hr class="dropdown-divider"></li>
-
-                <li><a class="dropdown-item" href="#">Something else here</a></li>
               </ul>
             </li>
-            <li class="nav-item">
-              <a class="nav-link disabled">Disabled</a>
-            </li>
           </ul>
-          <form class="d-flex" role="search">
-            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-success" type="submit">Search</button>
-          </form>
         </div>
       </div>
     </nav>
+    <br>
 <div class="container-xl"><!--100% wide until extra large breakpoint-->
 
     <br><br>
     <p  class="text-center fw-bold text-uppercase" >Consultar Funcionários</p>
      <form action="/consultarFunc.html" method="POST" class="row g-3">
-
       <!-- label de busca pelo nome -->
       <div class="col-md-6 position-absolute top-50 start-50 translate-middle" >
         <label id="nomeFunc" name="nomeFunc" class="form-label">Nome do Funcionário</label>
@@ -72,10 +63,9 @@
         <!-- botão para acionar a busca pelo nome -->
         <button type="submit" class="btn btn-primary">Consultar Dados do Funcionário</button>
       </div>
-
-
     </form>
-    <p> {{dados}}</p>
+    <br>
+    <p class="text-center text-break">{{dados}}</p>
 
 </div>
 </body>

@@ -37,10 +37,10 @@ def cadastrar():
 
         if operacoesLogin.cpf_validate(this.cpfFunc) == True:
             this.dados = operacoesFunc.inserirFunc(this.nomeFunc, this.cpfFunc, this.celularFunc, this.salarioFunc, this.senhaFunc, this.cargo)
-            return render_template('/cadastrarFunc.html', titulo='Página De Cadastro Dos Funcionário',resultado=this.dados)
-        else:
-            this.dados = "CPF não é válido!"
             return render_template('/cadastrarFunc.html', titulo='Página De Cadastro Dos Funcionário', resultado=this.dados)
+        else:
+            this.dados = "CPF não é válido, favor cadastrar com CPF existente!"
+    return render_template('/cadastrarFunc.html', titulo='Página De Cadastro Dos Funcionário', resultado=this.dados)
 
 
 #consultar Funcionário por nome
@@ -52,6 +52,7 @@ def consultar_por_nome():
     else:
         this.mensagem = ""
     return render_template('/consultarFunc.html', titulo='Página De Consulta Dos Funcionários', dados=this.mensagem)
+
 
 
 if __name__ == "__main__":
