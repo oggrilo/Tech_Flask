@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="en">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -12,7 +12,8 @@
     <title>{{titulo}}</title>
 </head>
 <body>
-   <!-- NAVBAR-->
+
+<!-- NAVBAR-->
     <nav class="navbar navbar-expand-lg bg-light navbar fixed-top bg-light">
       <div class="container-fluid">
         <a class="navbar-brand" href="/">TechFood</a>
@@ -57,22 +58,30 @@
       </div>
     </nav>
         <br>
+
 <div class="container-xl"><!--100% wide until extra large breakpoint-->
 
     <br><br>
-    <p  class="text-center fw-bold text-uppercase" >Consultar Funcionários</p>
-     <form action="/consultarFunc.html" method="POST" class="row g-3">
-      <!-- label de busca pelo nome -->
-      <div class="col-md-6 position-absolute top-50 start-50 translate-middle" >
-        <label id="nomeFunc" name="nomeFunc" class="form-label">Nome do Funcionário</label>
-        <input type="text" class="form-control" id="tNomeFunc" name="tNovoNomeFunc" placeholder=" Digite o nome do funcionário aqui :) ">
-          <br><br>
-        <!-- botão para acionar a busca pelo nome -->
-        <button type="submit" class="btn btn-primary">Consultar Dados do Funcionário</button>
+    <p  class="text-center fw-bold text-uppercase" >Excluir Funcionário</p>
+
+    <!-- form para coletar dado -->
+    <form action="/excluirFunc.html" method="POST" class="row g-3">
+
+      <!-- label de codigo para selecionar o funcionário que deseja excluir -->
+      <div class="col-md-6">
+        <label  name="tCodigoFunc" class="form-label">Código do Funcionário</label>
+        <input type="number" class="form-control" name="tCodigoFunc" min="1">
       </div>
+
+      <!--botão para dar submit e excluir o funcionário do sistema-->
+      <div class="col-12">
+        <button type="submit" class="btn btn-primary">Excluir Funcionário Do Sistema</button>
+      </div>
+
     </form>
-    <br>
-    <p class="text-center text-break">{{dados}}</p>
+
+    <!--resultado caso o funcionário tenha sido excluido do BD-->
+    <h3 class="text-center text-break">{{resultado}} <!--Dados Excluídos:-->{{valor}}<br></h3>
 
 </div>
 </body>

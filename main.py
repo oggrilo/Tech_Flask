@@ -15,6 +15,10 @@ this.salarioFunc = ""
 this.senhaFunc = ""
 this.cargo = ""
 
+this.campo = ""
+
+this.nDado = ""
+
 this.dados = ""
 this.mensagem = ""
 
@@ -53,6 +57,24 @@ def consultar_por_nome():
         this.mensagem = ""
     return render_template('/consultarFunc.html', titulo='Página De Consulta Dos Funcionários', dados=this.mensagem)
 
+#atualizar dados do funcionário
+@pessoa.route('/atualizarFunc.html', methods=['GET', 'POST'])
+def atualizarDados():
+    if request.method =='POST':
+        this.nomeFunc = request.form['tNomeFunc']
+        this.campo = request.form['Campo']
+        this.novoDado = request.form['tNovoDado']
+        this.dados = operacoesFunc.atualizarFunc(this.nomeFunc, this.campo, this.novoDado)
+    return render_template('/atualizarFunc.html', titulo='Página De Atualização Dados Do Funcionário', resultado=this.dados)
+
+#excluir algum funcionário
+@pessoa.route('/excluirFunc.html', methods=['GET', 'POST'])
+def excluirDados():
+    if request.method =='POST':
+        this.codigo = request.form['tCodigoFunc']
+        this.mensagem = operacoesFunc.selecionar_func_cod(this.codigo)
+        this.dados = operacoesFunc.excluirFunc(this.codigo)
+    return render_template('/excluirFunc.html', titulo='Excluir', valor=this.mensagem, resultado=this.dados)
 
 
 if __name__ == "__main__":

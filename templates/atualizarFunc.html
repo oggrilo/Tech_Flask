@@ -12,7 +12,8 @@
     <title>{{titulo}}</title>
 </head>
 <body>
-   <!-- NAVBAR-->
+
+<!-- NAVBAR-->
     <nav class="navbar navbar-expand-lg bg-light navbar fixed-top bg-light">
       <div class="container-fluid">
         <a class="navbar-brand" href="/">TechFood</a>
@@ -56,23 +57,45 @@
         </div>
       </div>
     </nav>
-        <br>
+    <br>
 <div class="container-xl"><!--100% wide until extra large breakpoint-->
 
     <br><br>
-    <p  class="text-center fw-bold text-uppercase" >Consultar Funcionários</p>
-     <form action="/consultarFunc.html" method="POST" class="row g-3">
-      <!-- label de busca pelo nome -->
-      <div class="col-md-6 position-absolute top-50 start-50 translate-middle" >
-        <label id="nomeFunc" name="nomeFunc" class="form-label">Nome do Funcionário</label>
-        <input type="text" class="form-control" id="tNomeFunc" name="tNovoNomeFunc" placeholder=" Digite o nome do funcionário aqui :) ">
-          <br><br>
-        <!-- botão para acionar a busca pelo nome -->
-        <button type="submit" class="btn btn-primary">Consultar Dados do Funcionário</button>
+    <p  class="text-center fw-bold text-uppercase" >Atualizar Dados Do Funcionário</p>
+    <!-- form para coletar dado -->
+    <form action="/atualizarFunc.html" method="POST" class="row g-3">
+
+      <!-- label de nome para selecionar o funcionário que deseja atualizar -->
+      <div class="col-md-6">
+        <label id="nomeFunc" name="tNomeFunc" class="form-label">Nome do Funcionário</label>
+        <input type="text" class="form-control" id="idNomeFunc" name="tNomeFunc" placeholder=" Manuel ">
+      </div>
+
+      <!-- label de seleção do campo que deseja atualizar -->
+      <div class="col-md-4">
+        <label for="inputCampo" class="form-label ">Atualizar</label>
+        <select id="inputCampo" name= "Campo" class="form-select ">
+          <option selected value="nomeFunc"> Nome </option>
+          <option value="celularFunc"> Celular </option>
+          <option value="salarioFunc"> Salário </option>
+          <option value="senhaFunc"> Senha </option>
+          <option value="cargo"> Cargo </option>
+        </select>
+      </div>
+
+      <!-- label de coleta do novo dado que será inserido -->
+      <div class="col-md-6">
+        <label id="novoDado" name="tNovoDado" class="form-label">Novo Dado</label>
+        <input type="text" class="form-control"  name="tNovoDado" placeholder="Insira o novo dado  aqui! :) ">
+      </div>
+
+      <div class="col-12">
+        <button type="submit" class="btn btn-primary">Atualizar Dados Do Funcionário</button>
       </div>
     </form>
-    <br>
-    <p class="text-center text-break">{{dados}}</p>
+
+    <!--resultado caso os dados tenha sido atualizados no BD-->
+    <h3 class="text-center text-break">{{resultado}}</h3>
 
 </div>
 </body>

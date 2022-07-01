@@ -31,15 +31,49 @@ def selecionar_func(nome):
     except Exception as erro:
         return erro
 
-#Atualizar dados no banco de dados
-def atualizarNome(codigoFunc, nomeFunc):
+#Consultar os dados do BD
+def selecionar_func_cod(codigo):
     try:
-        sql = "update funcionario set nomeFunc = '{}' where codigoFunc = '{}'".format(nomeFunc,codigoFunc)
+        sql = "select * from funcionario where codigoFunc = '{}'".format(codigo)
+        con.execute(sql)
+
+        this.msg = ""
+        this.msg = " Nenhum Funcionário Encontrado!"
+        for (codigoFunc, nomeFunc, cpfFunc, celularFunc, salarioFunc, senhaFunc, cargo) in con:
+            if codigoFunc == int(codigo):
+                this.msg = "Código: {}, Nome: {}, CPF: {}, Celular: {}, Salário {}, Senha: {}, Cargo: {}".format(codigoFunc, nomeFunc, cpfFunc, celularFunc, salarioFunc, senhaFunc, cargo)
+                return this.msg
+        return this.msg
+    except Exception as erro:
+        return erro
+
+#Atualizar dados no banco de dados
+def atualizarFunc(nomeFunc, campo, novoDado):
+    try:
+        sql = "update funcionario set {} = '{}' where nomeFunc = '{}'".format(campo, novoDado, nomeFunc)
         con.execute(sql)
         db_connection.commit()
-        print(con.rowcount, "Atualizado!")
+        return " {} Atualizado!".format(con.rowcount)
     except Exception as erro:
-        print(erro)
+        return(erro)
+
+def excluirFunc(codigoFunc):
+    try:
+        sql = "delete from funcionario where codigoFunc = '{}'".format(codigoFunc)
+        con.execute(sql)
+        db_connection.commit()
+        return " {} Deletado do Sistema!".format(con.rowcount)
+    except Exception as erro:
+        return erro
+
+def atualizarNome(codigoFunc, nomeFunc):
+    try:
+        sql = "update funcionario set {} = '{}' where codigoFunc = '{}'".format(nomeFunc,codigoFunc)
+        con.execute(sql)
+        db_connection.commit()
+        return con.rowcount, "Atualizado!"
+    except Exception as erro:
+        return(erro)
 
 def atualizarCelular(codigoFunc, celularFunc):
     try:
