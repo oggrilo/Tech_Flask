@@ -74,7 +74,7 @@ def excluirDados():
         this.codigo = request.form['tCodigoFunc']
         this.mensagem = operacoesFunc.selecionar_func_cod(this.codigo)
         this.dados = operacoesFunc.excluirFunc(this.codigo)
-    return render_template('/excluirFunc.html', titulo='Excluir', valor=this.mensagem, resultado=this.dados)
+    return render_template('/excluirFunc.html', titulo='Excluir Funcionário', valor=this.mensagem, resultado=this.dados)
 
 
 if __name__ == "__main__":
